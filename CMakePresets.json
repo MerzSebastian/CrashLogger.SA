@@ -1,0 +1,31 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": { "major": 3, "minor": 20, "patch": 0 },
+  "configurePresets": [
+    {
+      "name": "vs-x86",
+      "displayName": "Visual Studio 2022 (Win32)",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "Win32",
+      "binaryDir": "${sourceDir}/build/vs-x86"
+    },
+    {
+      "name": "ninja-x86",
+      "displayName": "Ninja + MSVC (run from an x86 Developer Command Prompt)",
+      "generator": "Ninja Multi-Config",
+      "binaryDir": "${sourceDir}/build/ninja-x86",
+      "cacheVariables": { "CMAKE_CXX_COMPILER": "cl" }
+    }
+  ],
+  "buildPresets": [
+    { "name": "vs-x86-release", "configurePreset": "vs-x86", "configuration": "Release" },
+    { "name": "vs-x86-debug", "configurePreset": "vs-x86", "configuration": "Debug" },
+    { "name": "ninja-x86-release", "configurePreset": "ninja-x86", "configuration": "Release" }
+  ],
+  "testPresets": [
+    { "name": "vs-x86-release", "configurePreset": "vs-x86", "configuration": "Release",
+      "output": { "outputOnFailure": true } },
+    { "name": "ninja-x86-release", "configurePreset": "ninja-x86", "configuration": "Release",
+      "output": { "outputOnFailure": true } }
+  ]
+}

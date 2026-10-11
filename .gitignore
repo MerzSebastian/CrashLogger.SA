@@ -1,0 +1,29 @@
+# build output
+out/
+build/
+dist/
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.asi
+*.zip
+
+# logs and dumps (also what the plugin itself writes)
+*.log
+*.log.old
+*.dmp
+crashlog.txt
+
+# CMake
+CMakeUserPresets.json
+CMakeCache.txt
+CMakeFiles/
+Testing/
+
+# local scratch
+.vs/
+.vscode/
+*.user
+__pycache__/
+*.pyc

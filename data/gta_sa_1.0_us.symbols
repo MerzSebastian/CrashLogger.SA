@@ -1,0 +1,49 @@
+# GTA San Andreas 1.0 US (HOODLUM-compatible exe, image base 0x400000)
+#
+# Format:  <address> [<size>] <name>      ('#' and '//' start comments)
+#
+# This is a small seed list of well-known functions, compiled from public
+# reverse-engineering documentation. Names are function identifiers only.
+# Entries without a size are matched as "nearest preceding symbol within MaxGap
+# bytes" and shown with a '~' in the log, so treat them as hints.
+#
+# For full coverage regenerate this file from headers that document the game's functions:
+#     python tools/gen_symbols.py path/to/headers -o data/gta_sa_1.0_us.symbols
+# If an address below is wrong for your exe, fix it or delete the line.
+
+# --- CStreaming ---
+0x004087E0 CStreaming::RequestModel
+0x004089A0 CStreaming::RemoveModel
+0x0040C6B0 CStreaming::ConvertBufferToObject
+0x0040E170 CStreaming::LoadRequestedModels
+0x0040E670 CStreaming::Update
+0x0040EA10 CStreaming::LoadAllRequestedModels
+
+# --- Main loop / game ---
+0x0053BEE0 CGame::Process
+0x0053E230 Render2dStuff
+0x0053E920 Idle
+0x00561B10 CTimer::Update
+
+# --- Scripts ---
+0x00469F00 CRunningScript::Process
+0x0046A000 CTheScripts::Process
+
+# --- World / rendering / collision ---
+0x00553AA0 CRenderer::RenderEverythingBarRoads
+0x005556E0 CRenderer::ConstructRenderList
+0x00563220 CWorld::Add
+0x00563280 CWorld::Remove
+0x005684A0 CWorld::Process
+0x0054DFB0 CPhysical::ProcessCollision
+0x0056BA00 CCollision::ProcessLineOfSight
+0x005B8700 CFileLoader::LoadScene
+
+# --- Entities ---
+0x005E8CD0 CPed::ProcessControl
+0x006B1880 CAutomobile::ProcessControl
+
+# --- Memory / text ---
+0x0072F420 CMemoryMgr::Malloc
+0x0072F430 CMemoryMgr::Free
+0x006A0050 CText::Get
